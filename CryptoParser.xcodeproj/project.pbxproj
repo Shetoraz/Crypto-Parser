@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A95751B823FDB53B0092FA51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95751B723FDB53B0092FA51 /* AppDelegate.swift */; };
-		A95751BA23FDB53B0092FA51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95751B923FDB53B0092FA51 /* SceneDelegate.swift */; };
 		A95751BC23FDB53B0092FA51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95751BB23FDB53B0092FA51 /* ViewController.swift */; };
 		A95751BF23FDB53B0092FA51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A95751BD23FDB53B0092FA51 /* Main.storyboard */; };
 		A95751C123FDB53D0092FA51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A95751C023FDB53D0092FA51 /* Assets.xcassets */; };
@@ -18,7 +17,6 @@
 /* Begin PBXFileReference section */
 		A95751B423FDB53B0092FA51 /* CryptoParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A95751B723FDB53B0092FA51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A95751B923FDB53B0092FA51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A95751BB23FDB53B0092FA51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A95751BE23FDB53B0092FA51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A95751C023FDB53D0092FA51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,7 +55,6 @@
 			isa = PBXGroup;
 			children = (
 				A95751B723FDB53B0092FA51 /* AppDelegate.swift */,
-				A95751B923FDB53B0092FA51 /* SceneDelegate.swift */,
 				A95751BB23FDB53B0092FA51 /* ViewController.swift */,
 				A95751BD23FDB53B0092FA51 /* Main.storyboard */,
 				A95751C023FDB53D0092FA51 /* Assets.xcassets */,
@@ -140,7 +137,6 @@
 			files = (
 				A95751BC23FDB53B0092FA51 /* ViewController.swift in Sources */,
 				A95751B823FDB53B0092FA51 /* AppDelegate.swift in Sources */,
-				A95751BA23FDB53B0092FA51 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +212,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +266,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -287,6 +283,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9739Q97K2B;
 				INFOPLIST_FILE = CryptoParser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -294,7 +291,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = asd.CryptoParser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -305,6 +302,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9739Q97K2B;
 				INFOPLIST_FILE = CryptoParser/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -312,7 +310,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = asd.CryptoParser;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
