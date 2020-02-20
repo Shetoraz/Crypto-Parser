@@ -12,6 +12,12 @@
 		A95751BF23FDB53B0092FA51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A95751BD23FDB53B0092FA51 /* Main.storyboard */; };
 		A95751C123FDB53D0092FA51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A95751C023FDB53D0092FA51 /* Assets.xcassets */; };
 		A95751C423FDB53D0092FA51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A95751C223FDB53D0092FA51 /* LaunchScreen.storyboard */; };
+		A95751D223FDC6110092FA51 /* CurrencyCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95751D023FDC6110092FA51 /* CurrencyCustomTableViewCell.swift */; };
+		A95751D323FDC6110092FA51 /* CurrencyCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A95751D123FDC6110092FA51 /* CurrencyCustomTableViewCell.xib */; };
+		A95751D623FDCB770092FA51 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95751D523FDCB770092FA51 /* Model.swift */; };
+		A95751DB23FDCD9B0092FA51 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95751DA23FDCD9B0092FA51 /* Networker.swift */; };
+		A95751DD23FDD2820092FA51 /* JSONModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95751DC23FDD2820092FA51 /* JSONModel.swift */; };
+		A95751E023FDD4E00092FA51 /* Kernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95751DF23FDD4E00092FA51 /* Kernel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		A95751C023FDB53D0092FA51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A95751C323FDB53D0092FA51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A95751C523FDB53D0092FA51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A95751D023FDC6110092FA51 /* CurrencyCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCustomTableViewCell.swift; sourceTree = "<group>"; };
+		A95751D123FDC6110092FA51 /* CurrencyCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCustomTableViewCell.xib; sourceTree = "<group>"; };
+		A95751D523FDCB770092FA51 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A95751DA23FDCD9B0092FA51 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
+		A95751DC23FDD2820092FA51 /* JSONModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONModel.swift; sourceTree = "<group>"; };
+		A95751DF23FDD4E00092FA51 /* Kernel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kernel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				A95751B623FDB53B0092FA51 /* CryptoParser */,
+				A95751C023FDB53D0092FA51 /* Assets.xcassets */,
 				A95751B523FDB53B0092FA51 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,14 +67,67 @@
 		A95751B623FDB53B0092FA51 /* CryptoParser */ = {
 			isa = PBXGroup;
 			children = (
-				A95751B723FDB53B0092FA51 /* AppDelegate.swift */,
-				A95751BB23FDB53B0092FA51 /* ViewController.swift */,
-				A95751BD23FDB53B0092FA51 /* Main.storyboard */,
-				A95751C023FDB53D0092FA51 /* Assets.xcassets */,
-				A95751C223FDB53D0092FA51 /* LaunchScreen.storyboard */,
-				A95751C523FDB53D0092FA51 /* Info.plist */,
+				A95751CD23FDC3440092FA51 /* Controllers */,
+				A95751CB23FDC3100092FA51 /* View */,
+				A95751D723FDCB7F0092FA51 /* Model */,
+				A95751DE23FDD3800092FA51 /* Service */,
+				A95751CC23FDC31A0092FA51 /* Supporting Files */,
 			);
 			path = CryptoParser;
+			sourceTree = "<group>";
+		};
+		A95751CB23FDC3100092FA51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A95751BD23FDB53B0092FA51 /* Main.storyboard */,
+				A95751C223FDB53D0092FA51 /* LaunchScreen.storyboard */,
+				A95751D423FDC77C0092FA51 /* Custom Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A95751CC23FDC31A0092FA51 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A95751C523FDB53D0092FA51 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A95751CD23FDC3440092FA51 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A95751B723FDB53B0092FA51 /* AppDelegate.swift */,
+				A95751BB23FDB53B0092FA51 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A95751D423FDC77C0092FA51 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				A95751D023FDC6110092FA51 /* CurrencyCustomTableViewCell.swift */,
+				A95751D123FDC6110092FA51 /* CurrencyCustomTableViewCell.xib */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
+		A95751D723FDCB7F0092FA51 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A95751D523FDCB770092FA51 /* Model.swift */,
+				A95751DC23FDD2820092FA51 /* JSONModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A95751DE23FDD3800092FA51 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				A95751DF23FDD4E00092FA51 /* Kernel.swift */,
+				A95751DA23FDCD9B0092FA51 /* Networker.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -122,6 +188,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A95751D323FDC6110092FA51 /* CurrencyCustomTableViewCell.xib in Resources */,
 				A95751C423FDB53D0092FA51 /* LaunchScreen.storyboard in Resources */,
 				A95751C123FDB53D0092FA51 /* Assets.xcassets in Resources */,
 				A95751BF23FDB53B0092FA51 /* Main.storyboard in Resources */,
@@ -135,8 +202,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A95751D223FDC6110092FA51 /* CurrencyCustomTableViewCell.swift in Sources */,
+				A95751E023FDD4E00092FA51 /* Kernel.swift in Sources */,
 				A95751BC23FDB53B0092FA51 /* ViewController.swift in Sources */,
 				A95751B823FDB53B0092FA51 /* AppDelegate.swift in Sources */,
+				A95751DD23FDD2820092FA51 /* JSONModel.swift in Sources */,
+				A95751D623FDCB770092FA51 /* Model.swift in Sources */,
+				A95751DB23FDCD9B0092FA51 /* Networker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,7 +354,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9739Q97K2B;
-				INFOPLIST_FILE = CryptoParser/Info.plist;
+				INFOPLIST_FILE = "CryptoParser/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -301,7 +373,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9739Q97K2B;
-				INFOPLIST_FILE = CryptoParser/Info.plist;
+				INFOPLIST_FILE = "CryptoParser/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
