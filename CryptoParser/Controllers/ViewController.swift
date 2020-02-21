@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
 
     private let model = Model(.kernel)
@@ -18,17 +19,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.setupTable()
         self.addObserver()
+        self.setupAddButton()
     }
 
     private func setupTable() {
         self.tableView.register(UINib(nibName: "CurrencyCustomTableViewCell", bundle: .main), forCellReuseIdentifier: "currencyCell")
         tableView.tableFooterView = UIView()
         tableView.separatorColor = UIColor.clear
-
     }
 
     func addObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "Reload"), object: nil)
+    }
+
+    func setupAddButton() {
+        self.addButton.layer.shadowOffset = CGSize(width: 3, height: 5)
+        self.addButton.layer.shadowRadius = 3
+        self.addButton.layer.shadowColor = UIColor.lightGray.cgColor
+        self.addButton.layer.shadowOpacity = 0.5
     }
 
     @objc private func refresh(notification: Notification) {
@@ -47,10 +55,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "currencyCell") as! CurrencyCustomTableViewCell
         let item = self.model.currencies[indexPath.section]
-        let name = item.name ?? ""
-        let price = item.currentPrice ?? 0.0
-        let change = item.priceChange24H ?? 0.0
-        cell.setup(name, price: price, change: change)
+        let rank = item.marketCapRank
+        let name = item.symbol?.uppercased()
+        let price = item.currentPrice
+        let change = item.priceChange24H
+        cell.setup(name, price: price, change: change, rank: rank)
 
         return cell
     }
@@ -74,6 +83,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView()
         header.backgroundColor = UIColor.clear
+        
         return header
     }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive,
+                                                title: "Delete") { (_ ,_) in
+                                                    self.model.delete(at: indexPath.section)
+                                                    self.tableView.deleteSections([indexPath.section], with: .left)
+        }
+        return [deleteAction]
+    }
 }
+
+
+

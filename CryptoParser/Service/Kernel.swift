@@ -9,14 +9,14 @@
 import Foundation
 
 class Kernel {
-
+    
     public let network: Networker
-
+    
     public static let kernel: Kernel = {
         let kernel = Kernel()
         return kernel
     }()
-
+    
     private init() {
         self.network = Networker()
     }

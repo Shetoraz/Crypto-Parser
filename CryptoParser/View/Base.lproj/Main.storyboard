@@ -18,7 +18,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="P7s-pr-JTH"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="vAu-J2-qfe"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="vAu-J2-qfe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Byv-Zt-Mxb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -40,6 +40,15 @@
                                     <outlet property="delegate" destination="ETk-80-XRg" id="G3o-j8-rQl"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="TLV-BR-wfw">
+                                <rect key="frame" x="172" y="733" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" backgroundImage="plus.circle.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="heavy"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -50,14 +59,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="afF-1V-F89"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Charts" id="Lkw-Gg-frx"/>
+                    <tabBarItem key="tabBarItem" title="Charts" image="chart.bar" catalog="system" id="Lkw-Gg-frx"/>
                     <connections>
+                        <outlet property="addButton" destination="TLV-BR-wfw" id="j2n-Dp-mrO"/>
                         <outlet property="tableView" destination="H3A-Lh-0UI" id="BFc-pY-jjn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHE-6f-U1h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="301" y="260"/>
+            <point key="canvasLocation" x="298.55072463768118" y="259.82142857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9Je-rQ-S3p">
@@ -78,4 +88,9 @@
             <point key="canvasLocation" x="677" y="-469"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="chart.bar" catalog="system" width="64" height="44"/>
+        <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="plus.circle.fill" catalog="system" width="64" height="60"/>
+    </resources>
 </document>

@@ -31,4 +31,8 @@ class Model {
             }
         }
     }
+
+    func delete(at index: Int) {
+        self.currencies.remove(at: index)
+    }
 }
