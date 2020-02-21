@@ -10,14 +10,17 @@ import UIKit
 
 class CurrencyCustomTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+
+    @IBOutlet weak var priceLabel: UILabel!
+
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func setup(_ name: String) {
+    func setup(_ name: String, price: Double) {
         self.nameLabel.text = name
+        self.priceLabel.text = String(price)
     }
 }
