@@ -9,7 +9,12 @@
 import Foundation
 
 // MARK: - WeatherElement
-struct Response: Codable {
+struct Response: Codable, Equatable {
+
+    static func == (lhs: Response, rhs: Response) -> Bool {
+        return lhs.id == rhs.id && lhs.id == rhs.id
+    }
+
     let id, symbol, name: String?
     let image: String?
     let currentPrice: Double?

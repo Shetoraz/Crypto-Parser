@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     private let model = Model(.kernel)
+    private let refreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,15 @@ class ViewController: UIViewController {
 
     private func setupTable() {
         self.tableView.register(UINib(nibName: "CurrencyCustomTableViewCell", bundle: .main), forCellReuseIdentifier: "currencyCell")
-        tableView.tableFooterView = UIView()
-        tableView.separatorColor = UIColor.clear
+        self.tableView.tableFooterView = UIView()
+        self.tableView.separatorColor = UIColor.clear
+        self.tableView.refreshControl = refreshControl
+        if #available(iOS 10.0, *) {
+            self.tableView.refreshControl = refreshControl
+        } else {
+            self.tableView.addSubview(refreshControl)
+        }
+        self.refreshControl.addTarget(self, action: #selector(refreshPrice), for: .valueChanged)
     }
 
     func addObserver() {
@@ -37,6 +45,11 @@ class ViewController: UIViewController {
         self.addButton.layer.shadowRadius = 3
         self.addButton.layer.shadowColor = UIColor.lightGray.cgColor
         self.addButton.layer.shadowOpacity = 0.5
+    }
+
+    @objc private func refreshPrice(_ sender: Any) {
+        self.model.refresh()
+        self.refreshControl.endRefreshing()
     }
 
     @objc private func refresh(notification: Notification) {

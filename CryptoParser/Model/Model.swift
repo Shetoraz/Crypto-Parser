@@ -18,12 +18,14 @@ class Model {
         self.refresh()
     }
 
-    private func refresh() {
+    func refresh() {
         self.kernel?.network.sentRequest { (response) in
             switch response {
             case .success(let currencys):
                 for item in currencys {
-                    self.currencies.append(item)
+                    if !self.currencies.contains(item) {
+                        self.currencies.append(item)
+                    }
                 }
                 NotificationCenter.default.post(name: Notification.Name("Reload"), object: nil)
             case .failure(let error):
