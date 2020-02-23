@@ -11,7 +11,7 @@ import Foundation
 class Model {
 
     var currencies = Currency()
-    let kernel: Kernel?
+    private let kernel: Kernel?
 
     init(_ kernel: Kernel) {
         self.kernel = kernel
@@ -22,9 +22,11 @@ class Model {
         self.kernel?.network.sentRequest { (response) in
             switch response {
             case .success(let currencys):
-                for item in currencys {
-                    if !self.currencies.contains(item) {
-                        self.currencies.append(item)
+                for item in 0...currencys.count - 1 {
+                    if self.currencies.contains(currencys[item]) {
+                        self.currencies[item] = currencys[item]
+                    } else {
+                        self.currencies.append(currencys[item])
                     }
                 }
                 NotificationCenter.default.post(name: Notification.Name("Reload"), object: nil)

@@ -33,14 +33,15 @@ class ViewController: UIViewController {
         } else {
             self.tableView.addSubview(refreshControl)
         }
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Updating...")
         self.refreshControl.addTarget(self, action: #selector(refreshPrice), for: .valueChanged)
     }
 
-    func addObserver() {
+    private func addObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "Reload"), object: nil)
     }
 
-    func setupAddButton() {
+    private func setupAddButton() {
         self.addButton.layer.shadowOffset = CGSize(width: 3, height: 5)
         self.addButton.layer.shadowRadius = 3
         self.addButton.layer.shadowColor = UIColor.lightGray.cgColor

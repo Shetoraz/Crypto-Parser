@@ -51,7 +51,6 @@
 			isa = PBXGroup;
 			children = (
 				A95751B623FDB53B0092FA51 /* CryptoParser */,
-				A95751C023FDB53D0092FA51 /* Assets.xcassets */,
 				A95751B523FDB53B0092FA51 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				A95751C523FDB53D0092FA51 /* Info.plist */,
+				A95751C023FDB53D0092FA51 /* Assets.xcassets */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
