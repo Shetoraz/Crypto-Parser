@@ -22,9 +22,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Byv-Zt-Mxb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1000" y="260"/>
+            <point key="canvasLocation" x="1384" y="260"/>
         </scene>
-        <!--Charts-->
+        <!--View Controller-->
         <scene sceneID="eUB-mK-ZFQ">
             <objects>
                 <viewController id="ETk-80-XRg" customClass="ViewController" customModule="CryptoParser" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H3A-Lh-0UI">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="ETk-80-XRg" id="f95-Oa-v2j"/>
@@ -48,6 +48,9 @@
                                 <state key="normal" backgroundImage="plus.circle.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="heavy"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Plp-DH-ERp" kind="show" id="CJK-3a-jEQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -59,7 +62,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="afF-1V-F89"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Charts" image="chart.bar" catalog="system" id="Lkw-Gg-frx"/>
+                    <navigationItem key="navigationItem" id="ysP-WV-Jwf"/>
                     <connections>
                         <outlet property="addButton" destination="TLV-BR-wfw" id="j2n-Dp-mrO"/>
                         <outlet property="tableView" destination="H3A-Lh-0UI" id="BFc-pY-jjn"/>
@@ -67,7 +70,42 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EHE-6f-U1h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="298.55072463768118" y="259.82142857142856"/>
+            <point key="canvasLocation" x="512" y="260"/>
+        </scene>
+        <!--All Currency View Controller-->
+        <scene sceneID="qdw-XE-Flx">
+            <objects>
+                <viewController id="Plp-DH-ERp" customClass="AllCurrencyViewController" customModule="CryptoParser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bQN-uV-cD2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RaY-oO-ZTQ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Plp-DH-ERp" id="66O-IB-N4P"/>
+                                    <outlet property="delegate" destination="Plp-DH-ERp" id="aUM-pX-BRd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Dds-Jc-L6h" firstAttribute="trailing" secondItem="RaY-oO-ZTQ" secondAttribute="trailing" id="6aN-1a-wzM"/>
+                            <constraint firstItem="Dds-Jc-L6h" firstAttribute="bottom" secondItem="RaY-oO-ZTQ" secondAttribute="bottom" id="7gb-ym-JYJ"/>
+                            <constraint firstItem="RaY-oO-ZTQ" firstAttribute="leading" secondItem="Dds-Jc-L6h" secondAttribute="leading" id="beC-1W-f0J"/>
+                            <constraint firstItem="RaY-oO-ZTQ" firstAttribute="top" secondItem="Dds-Jc-L6h" secondAttribute="top" id="eFO-nb-qvZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Dds-Jc-L6h"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7gd-Jc-QSV"/>
+                    <connections>
+                        <outlet property="tableView" destination="RaY-oO-ZTQ" id="MIp-AL-Z93"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Udw-um-ulk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="511.59420289855075" y="941.51785714285711"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9Je-rQ-S3p">
@@ -79,13 +117,32 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="ETk-80-XRg" kind="relationship" relationship="viewControllers" id="Mux-b4-4CW"/>
+                        <segue destination="Ri8-se-76u" kind="relationship" relationship="viewControllers" id="Mux-b4-4CW"/>
                         <segue destination="JuJ-YS-RiH" kind="relationship" relationship="viewControllers" id="h5w-d7-lL1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Abn-HD-CVI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="677" y="-469"/>
+        </scene>
+        <!--Charts-->
+        <scene sceneID="8fi-ag-rey">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ri8-se-76u" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Charts" image="chart.bar" catalog="system" id="Lkw-Gg-frx"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Qj2-JW-5sa">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ETk-80-XRg" kind="relationship" relationship="rootViewController" id="Wfp-lD-fm8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M4p-O0-Rnf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-170" y="260"/>
         </scene>
     </scenes>
     <resources>

@@ -10,10 +10,15 @@ import Foundation
 
 class Networker {
 
+    enum Requests: String {
+        typealias RawValue = String
+        case all = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false"
+    }
+
     private static var networkService: Networker?
 
-    func sentRequest(completion: @escaping (Result<Currency, Error>) -> Void) {
-        let url = URL(string: "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=3&page=1&sparkline=false")!
+    func sentRequest(_ type: Requests, completion: @escaping (Result<Currency, Error>) -> Void) {
+        guard let url = URL(string: type.rawValue) else { return }
         let session = URLSession.shared
         let decoder = JSONDecoder()
         session.dataTask(with: url) { data, _ , error in
