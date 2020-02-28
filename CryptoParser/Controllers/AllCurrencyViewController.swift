@@ -37,6 +37,21 @@ class AllCurrencyViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+
+    @IBAction func donePressed(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Confirmation",
+                                      message: "\(self.model.selectedCurrencies.count) items will be added",
+            preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Add",
+                                      style: .default,
+                                      handler: { _ in
+                                        self.navigationController?.popToRootViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel",
+                                      style: .cancel,
+                                      handler: nil))
+        present(alert, animated: true)
+    }
 }
 
 extension AllCurrencyViewController: UITableViewDelegate, UITableViewDataSource {
@@ -110,9 +125,8 @@ extension AllCurrencyViewController: UISearchResultsUpdating {
         resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
-            controller.dimsBackgroundDuringPresentation = false
+            controller.obscuresBackgroundDuringPresentation = false
             controller.searchBar.sizeToFit()
-            controller.hidesNavigationBarDuringPresentation = true
             self.tableView.tableHeaderView = controller.searchBar
 
             return controller
@@ -120,12 +134,15 @@ extension AllCurrencyViewController: UISearchResultsUpdating {
     }
 
     func updateSearchResults(for searchController: UISearchController) {
-        self.model.filteredCurrencies.removeAll(keepingCapacity: false)
-        let searchTerm = searchController.searchBar.text!.lowercased()
-        let array = self.model.currencies.filter { result in
-            return result.name!.lowercased().contains(searchTerm) || result.symbol!.lowercased().contains(searchTerm)
+        self.model.filteredCurrencies.removeAll()
+        if let searchTerm = searchController.searchBar.text?.lowercased() {
+            let array = self.model.currencies.filter { result in
+                let name = result.name?.lowercased() ?? ""
+                let symbol = result.symbol?.lowercased() ?? ""
+                return name.contains(searchTerm) || symbol.contains(searchTerm)
+            }
+            self.model.filteredCurrencies = array
+            self.tableView.reloadData()
         }
-        self.model.filteredCurrencies = array
-        self.tableView.reloadData()
     }
 }

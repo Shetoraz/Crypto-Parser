@@ -12,7 +12,7 @@ class Networker {
 
     enum Requests: String {
         typealias RawValue = String
-        case all = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false"
+        case all = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
     }
 
     private static var networkService: Networker?

@@ -98,7 +98,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Dds-Jc-L6h"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7gd-Jc-QSV"/>
+                    <navigationItem key="navigationItem" id="7gd-Jc-QSV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="2Vf-sp-lUM">
+                            <connections>
+                                <action selector="donePressed:" destination="Plp-DH-ERp" id="fMT-Yf-pof"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="RaY-oO-ZTQ" id="MIp-AL-Z93"/>
                     </connections>
