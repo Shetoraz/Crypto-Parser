@@ -111,5 +111,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+extension ViewController {
 
+    @IBAction func backToFavorite(unwindSegue: UIStoryboardSegue) {
+        if unwindSegue.source is AllCurrencyViewController {
+            if let vc = unwindSegue.source as? AllCurrencyViewController {
+                self.model.currencies = vc.model.selectedCurrencies
+            }
+        }
+        self.tableView.reloadData()
+    }
+}
 

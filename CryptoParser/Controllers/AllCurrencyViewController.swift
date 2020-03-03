@@ -12,7 +12,7 @@ class AllCurrencyViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    private let model = AllCurrencyModel(.kernel)
+    let model = AllCurrencyModel(.kernel)
     var resultSearchController = UISearchController()
 
     override func viewDidLoad() {
@@ -45,7 +45,7 @@ class AllCurrencyViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Add",
                                       style: .default,
                                       handler: { _ in
-                                        self.navigationController?.popToRootViewController(animated: true)
+                                        self.navigationController?.performSegue(withIdentifier: "selected", sender: self)
         }))
         alert.addAction(UIAlertAction(title: "Cancel",
                                       style: .cancel,

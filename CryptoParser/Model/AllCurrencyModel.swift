@@ -21,7 +21,7 @@ class AllCurrencyModel {
     }
 
     func refresh() {
-        self.kernel?.network.sentRequest(.all) { (response) in
+        self.kernel?.network.getCurrencies() { response in
             switch response {
             case .success(let currencys):
                 for item in 0...currencys.count - 1 {
