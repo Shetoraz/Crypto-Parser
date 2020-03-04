@@ -34,20 +34,5 @@ class Networker {
         }.resume()
     }
 
-    func refresh(completion: @escaping (Result<Currency, Error>) -> Void) {
-        guard let url = URL(string: Requests.refresh.rawValue) else { return }
-        let session = URLSession.shared
-        let decoder = JSONDecoder()
-        session.dataTask(with: url) { data, _ , error in
-            guard let data = data else { return }
-            do {
-                let response = try decoder.decode(Currency.self, from: data)
-                completion(.success(response))
-            }
-            catch {
-                completion(.failure(error))
-            }
-        }.resume()
-    }
 }
 

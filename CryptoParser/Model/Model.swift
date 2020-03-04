@@ -15,11 +15,10 @@ class Model {
 
     init(_ kernel: Kernel) {
         self.kernel = kernel
-        self.refresh()
     }
 
     func refresh() {
-        self.kernel?.network.refresh() { response in
+        self.kernel?.network.getCurrencies() { response in
             switch response {
             case .success(let currencys):
                 for item in 0...currencys.count - 1 {
@@ -28,14 +27,24 @@ class Model {
                         self.currencies[item] = currencys[item]
                     }
                 }
-                NotificationCenter.default.post(name: Notification.Name("Refresh"), object: nil)
+                NotificationCenter.default.post(name: Notification.Name("Reload"), object: nil)
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
             }
         }
     }
 
     func delete(at index: Int) {
         self.currencies.remove(at: index)
+    }
+
+    func addToFavourite(from array: Currency) {
+        for item in array {
+            if self.currencies.contains(item) {
+                continue
+            } else {
+                self.currencies.append(item)
+            }
+        }
     }
 }

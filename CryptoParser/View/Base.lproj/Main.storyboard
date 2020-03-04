@@ -99,10 +99,9 @@
                         <viewLayoutGuide key="safeArea" id="Dds-Jc-L6h"/>
                     </view>
                     <navigationItem key="navigationItem" id="7gd-Jc-QSV">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="2Vf-sp-lUM">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="3mX-Zz-JLc">
                             <connections>
-                                <action selector="donePressed:" destination="Plp-DH-ERp" id="zlj-xy-ckZ"/>
-                                <segue destination="EgF-1d-Vmg" kind="unwind" unwindAction="myUnwindActionWithUnwindSegue:" id="Lph-cD-Mh3"/>
+                                <segue destination="EgF-1d-Vmg" kind="unwind" identifier="selected" unwindAction="backToFavoriteWithUnwindSegue:" id="X7k-gw-mEc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

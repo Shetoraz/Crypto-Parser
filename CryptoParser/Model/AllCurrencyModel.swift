@@ -34,7 +34,7 @@ class AllCurrencyModel {
                 }
                 NotificationCenter.default.post(name: Notification.Name("Refresh"), object: nil)
             case .failure(let error):
-                print(error.localizedDescription)
+                print(error)
             }
         }
     }

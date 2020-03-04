@@ -116,10 +116,9 @@ extension ViewController {
     @IBAction func backToFavorite(unwindSegue: UIStoryboardSegue) {
         if unwindSegue.source is AllCurrencyViewController {
             if let vc = unwindSegue.source as? AllCurrencyViewController {
-                self.model.currencies = vc.model.selectedCurrencies
+                self.model.addToFavourite(from: vc.model.selectedCurrencies)
             }
         }
         self.tableView.reloadData()
     }
 }
-
