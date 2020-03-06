@@ -21,13 +21,12 @@ class Model {
         self.kernel?.network.getCurrencies() { response in
             switch response {
             case .success(let currencys):
-                for item in 0...currencys.count - 1 {
-                    // TODO: - Fix array adding
-                    if self.currencies.contains(currencys[item]) {
-                        self.currencies[item] = currencys[item]
+                for item in currencys {
+                    if self.currencies.contains(item) {
+                        self.currencies.removeAll(where: {item == $0})
+                        self.currencies.append(item)
                     }
                 }
-                NotificationCenter.default.post(name: Notification.Name("Reload"), object: nil)
             case .failure(let error):
                 print(error)
             }
