@@ -81,7 +81,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "detailed", sender: self)
         self.tableView.deselectRow(at: indexPath, animated: true)
+
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -118,5 +120,12 @@ extension ViewController {
             }
         }
         self.tableView.reloadData()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailed" {
+            let vc = segue.destination as! DetailedViewController
+                vc.setupUI(curr: self.model.currencies[self.tableView?.indexPathForSelectedRow?.section ?? 0])
+        }
     }
 }
