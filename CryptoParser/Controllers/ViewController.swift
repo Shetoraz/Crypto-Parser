@@ -27,11 +27,7 @@ class ViewController: UIViewController {
         self.tableView.tableFooterView = UIView()
         self.tableView.separatorColor = UIColor.clear
         self.tableView.refreshControl = refreshControl
-        if #available(iOS 10.0, *) {
-            self.tableView.refreshControl = refreshControl
-        } else {
-            self.tableView.addSubview(refreshControl)
-        }
+        self.tableView.refreshControl = refreshControl
         self.refreshControl.attributedTitle = NSAttributedString(string: "Updating...")
         self.refreshControl.addTarget(self, action: #selector(refreshPrice), for: .valueChanged)
     }
@@ -125,7 +121,7 @@ extension ViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailed" {
             let vc = segue.destination as! DetailedViewController
-                vc.setupUI(curr: self.model.currencies[self.tableView?.indexPathForSelectedRow?.section ?? 0])
+            vc.setupUI(curr: self.model.currencies[self.tableView?.indexPathForSelectedRow?.section ?? 0])
         }
     }
 }

@@ -16,6 +16,7 @@ class DetailedViewController: UIViewController {
     @IBOutlet weak var supplyLabel: UILabel!
     @IBOutlet weak var positionLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var volumeLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +25,20 @@ class DetailedViewController: UIViewController {
 
     func setupUI(curr: Response) {
         DispatchQueue.main.async {
+            if let image = curr.image {
+                if let url = URL(string: image) {
+                    self.imageView.load(url)
+                }
+            }
             self.navigationController?.navigationBar.topItem?.title = curr.symbol?.uppercased()
             if let price = curr.currentPrice {
-                self.priceLabel.text = "$ \(price)"
+                self.priceLabel.text = "$ \(price.formattedWithSeparator)"
+            }
+            if let volume = curr.totalVolume {
+                self.volumeLabel.text = "$ " + String(volume.formattedWithSeparator)
             }
             if let change = curr.priceChangePercentage24H {
-                self.changeLabel.text = String(change)
+                self.changeLabel.text = String(format: "%.2f", change) + "%"
                 if change < 0 {
                     self.changeLabel.textColor = .systemRed
                 } else {
@@ -37,30 +46,13 @@ class DetailedViewController: UIViewController {
                 }
             }
             if let marketCap = curr.marketCap {
-                self.marketCapLabel.text = "$ \(marketCap)"
+                self.marketCapLabel.text = "$ \(marketCap.formattedWithSeparator)"
             }
             if let position = curr.marketCapRank {
-                self.positionLabel.text = String(position)
+                self.positionLabel.text = "RANK \(position)"
             }
             if let supply = curr.circulatingSupply {
-                self.supplyLabel.text = "\(Int(supply)) \(curr.symbol?.uppercased() ?? "")"
-            }
-            if let image = curr.image {
-                self.imageView.load(url: URL(string:image)!)
-            }
-        }
-    }
-}
-
-extension UIImageView {
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
+                self.supplyLabel.text = "\(Int(supply).formattedWithSeparator) \(curr.symbol?.uppercased() ?? "")"
             }
         }
     }

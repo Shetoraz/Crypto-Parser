@@ -18,7 +18,7 @@ struct Response: Codable, Equatable {
     let id, symbol, name: String?
     let image: String?
     let currentPrice: Double?
-    let marketCap, marketCapRank: Int?
+    let marketCap, marketCapRank, totalVolume: Int?
     let high24H, low24H, priceChange24H, priceChangePercentage24H: Double?
     let marketCapChange24H, marketCapChangePercentage24H, circulatingSupply: Double?
     let totalSupply: Int?
@@ -30,6 +30,7 @@ struct Response: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case id, symbol, name, image
         case currentPrice = "current_price"
+        case totalVolume = "total_volume"
         case marketCap = "market_cap"
         case marketCapRank = "market_cap_rank"
         case high24H = "high_24h"

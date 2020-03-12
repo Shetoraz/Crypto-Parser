@@ -23,6 +23,9 @@
 		A9B76D1E2402BA7A00B726DD /* AllCurrencyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B76D1D2402BA7A00B726DD /* AllCurrencyCustomCell.swift */; };
 		A9B76D202402BB0700B726DD /* AllCurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B76D1F2402BB0700B726DD /* AllCurrencyViewController.swift */; };
 		A9B76D222402BE1A00B726DD /* AllCurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B76D212402BE1A00B726DD /* AllCurrencyModel.swift */; };
+		A9F12E31241AB21C00D6A297 /* Formatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F12E30241AB21C00D6A297 /* Formatter+Extensions.swift */; };
+		A9F12E33241AB23E00D6A297 /* IntDouble+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F12E32241AB23E00D6A297 /* IntDouble+Formatter.swift */; };
+		A9F12E36241AB67400D6A297 /* ImageView+Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9F12E35241AB67400D6A297 /* ImageView+Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		A9B76D1D2402BA7A00B726DD /* AllCurrencyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCurrencyCustomCell.swift; sourceTree = "<group>"; };
 		A9B76D1F2402BB0700B726DD /* AllCurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCurrencyViewController.swift; sourceTree = "<group>"; };
 		A9B76D212402BE1A00B726DD /* AllCurrencyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCurrencyModel.swift; sourceTree = "<group>"; };
+		A9F12E30241AB21C00D6A297 /* Formatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter+Extensions.swift"; sourceTree = "<group>"; };
+		A9F12E32241AB23E00D6A297 /* IntDouble+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IntDouble+Formatter.swift"; sourceTree = "<group>"; };
+		A9F12E35241AB67400D6A297 /* ImageView+Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageView+Network.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,7 @@
 			children = (
 				A95751C523FDB53D0092FA51 /* Info.plist */,
 				A95751C023FDB53D0092FA51 /* Assets.xcassets */,
+				A9F12E34241AB26200D6A297 /* Extensions */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -143,6 +150,16 @@
 				A95751DA23FDCD9B0092FA51 /* Networker.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		A9F12E34241AB26200D6A297 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A9F12E30241AB21C00D6A297 /* Formatter+Extensions.swift */,
+				A9F12E32241AB23E00D6A297 /* IntDouble+Formatter.swift */,
+				A9F12E35241AB67400D6A297 /* ImageView+Network.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,9 +240,12 @@
 				A95751E023FDD4E00092FA51 /* Kernel.swift in Sources */,
 				A99720322416B08A00723F29 /* DetailedViewController.swift in Sources */,
 				A95751BC23FDB53B0092FA51 /* ViewController.swift in Sources */,
+				A9F12E33241AB23E00D6A297 /* IntDouble+Formatter.swift in Sources */,
 				A9B76D222402BE1A00B726DD /* AllCurrencyModel.swift in Sources */,
 				A95751B823FDB53B0092FA51 /* AppDelegate.swift in Sources */,
 				A95751DD23FDD2820092FA51 /* JSONModel.swift in Sources */,
+				A9F12E36241AB67400D6A297 /* ImageView+Network.swift in Sources */,
+				A9F12E31241AB21C00D6A297 /* Formatter+Extensions.swift in Sources */,
 				A9B76D1E2402BA7A00B726DD /* AllCurrencyCustomCell.swift in Sources */,
 				A95751D623FDCB770092FA51 /* Model.swift in Sources */,
 				A95751DB23FDCD9B0092FA51 /* Networker.swift in Sources */,
