@@ -29,7 +29,7 @@ class AllCurrencyCustomCell: UITableViewCell {
             nameLabel.text = name
         }
         if let priceLabel = self.priceLabel {
-            priceLabel.text = String(format: "%.3f", price ?? "")
+            priceLabel.text = price?.formattedWithSeparator
         }
     }
 }

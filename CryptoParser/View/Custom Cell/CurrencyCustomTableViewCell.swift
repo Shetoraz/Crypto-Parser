@@ -27,8 +27,8 @@ class CurrencyCustomTableViewCell: UITableViewCell {
 
     func setup(_ name: String?, price: Double?, change: Double?, rank: Int?) {
         self.nameLabel.text = "\(rank ?? 0). \(name ?? "")"
-        self.priceLabel.text = String(format: "%.3f", price ?? 0.0)
-        self.changeLabel.text = String(format: "%.3f", change ?? 0.0)
+        self.priceLabel.text = price?.formattedWithSeparator
+        self.changeLabel.text = change?.formattedWithSeparator
         if let change = change {
             if change > 0.0 {
                 self.changeLabel.textColor = .systemGreen

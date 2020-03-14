@@ -47,27 +47,22 @@ extension AllCurrencyViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "allCurrency") as! AllCurrencyCustomCell
-        if (resultSearchController.isActive) {
-            let item = self.model.filteredCurrencies[indexPath.section]
-            let name = item.symbol?.uppercased()
-            let price = item.currentPrice
-            cell.accessoryType = self.model.selectedCurrencies.contains(item) ? .checkmark : .none
-            cell.setup(name, price: price)
-
-            return cell
+        let item: Response
+        if resultSearchController.isActive {
+            item = self.model.filteredCurrencies[indexPath.section]
         } else {
-            let item = self.model.currencies[indexPath.section]
-            let name = item.symbol?.uppercased()
-            let price = item.currentPrice
-            cell.accessoryType = self.model.selectedCurrencies.contains(item) ? .checkmark : .none
-            cell.setup(name, price: price)
-
-            return cell
+            item = self.model.currencies[indexPath.section]
         }
+        let name = item.symbol?.uppercased()
+        let price = item.currentPrice
+        cell.accessoryType = self.model.selectedCurrencies.contains(item) ? .checkmark : .none
+        cell.setup(name, price: price)
+
+        return cell
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        if  (resultSearchController.isActive) {
+        if resultSearchController.isActive {
             return self.model.filteredCurrencies.count
         } else {
             return self.model.currencies.count
