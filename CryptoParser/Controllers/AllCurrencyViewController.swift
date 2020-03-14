@@ -37,21 +37,6 @@ class AllCurrencyViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-
-    @IBAction func donePressed(_ sender: UIBarButtonItem) {
-        let alert = UIAlertController(title: "Confirmation",
-                                      message: "\(self.model.selectedCurrencies.count) items will be added",
-            preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Add",
-                                      style: .default,
-                                      handler: { _ in
-                                        self.navigationController?.performSegue(withIdentifier: "selected", sender: self)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel",
-                                      style: .cancel,
-                                      handler: nil))
-        present(alert, animated: true)
-    }
 }
 
 extension AllCurrencyViewController: UITableViewDelegate, UITableViewDataSource {

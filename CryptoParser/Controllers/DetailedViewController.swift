@@ -14,7 +14,7 @@ class DetailedViewController: UIViewController {
     @IBOutlet weak var changeLabel: UILabel!
     @IBOutlet weak var marketCapLabel: UILabel!
     @IBOutlet weak var supplyLabel: UILabel!
-    @IBOutlet weak var positionLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var volumeLabel: UILabel!
 
@@ -48,8 +48,8 @@ class DetailedViewController: UIViewController {
             if let marketCap = curr.marketCap {
                 self.marketCapLabel.text = "$ \(marketCap.formattedWithSeparator)"
             }
-            if let position = curr.marketCapRank {
-                self.positionLabel.text = "RANK \(position)"
+            if let name = curr.name {
+                self.nameLabel.text = "\(name)"
             }
             if let supply = curr.circulatingSupply {
                 self.supplyLabel.text = "\(Int(supply).formattedWithSeparator) \(curr.symbol?.uppercased() ?? "")"

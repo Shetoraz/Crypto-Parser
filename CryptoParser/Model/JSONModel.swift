@@ -15,17 +15,9 @@ struct Response: Codable, Equatable {
         return lhs.id == rhs.id && lhs.id == rhs.id
     }
 
-    let id, symbol, name: String?
-    let image: String?
-    let currentPrice: Double?
-    let marketCap, marketCapRank, totalVolume: Int?
-    let high24H, low24H, priceChange24H, priceChangePercentage24H: Double?
-    let marketCapChange24H, marketCapChangePercentage24H, circulatingSupply: Double?
-    let totalSupply: Int?
-    let ath, athChangePercentage: Double?
-    let athDate: String?
-    let roi: Roi?
-    let lastUpdated: String?
+    let athDate, image, id, symbol, name, lastUpdated: String?
+    let currentPrice, totalVolume, high24H, low24H, priceChange24H, priceChangePercentage24H, marketCapChange24H, marketCapChangePercentage24H, circulatingSupply, ath, athChangePercentage: Double?
+    let marketCap, marketCapRank, totalSupply: Int?
 
     enum CodingKeys: String, CodingKey {
         case id, symbol, name, image
@@ -44,16 +36,8 @@ struct Response: Codable, Equatable {
         case ath
         case athChangePercentage = "ath_change_percentage"
         case athDate = "ath_date"
-        case roi
         case lastUpdated = "last_updated"
     }
-}
-
-// MARK: - Roi
-struct Roi: Codable {
-    let times: Double?
-    let currency: String?
-    let percentage: Double?
 }
 
 typealias Currency = [Response]

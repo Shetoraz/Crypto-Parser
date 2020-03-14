@@ -27,7 +27,6 @@ class ViewController: UIViewController {
         self.tableView.tableFooterView = UIView()
         self.tableView.separatorColor = UIColor.clear
         self.tableView.refreshControl = refreshControl
-        self.tableView.refreshControl = refreshControl
         self.refreshControl.attributedTitle = NSAttributedString(string: "Updating...")
         self.refreshControl.addTarget(self, action: #selector(refreshPrice), for: .valueChanged)
     }
