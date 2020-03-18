@@ -148,6 +148,11 @@
                                 <rect key="frame" x="20" y="162" width="120" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Up3-gD-Zlm" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="500" width="414" height="313"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.097676776349999994" green="0.1005829796" blue="0.16275373100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="SMJ-Kj-3xq"/>
@@ -155,6 +160,7 @@
                     <navigationItem key="navigationItem" id="t6w-sz-XHs"/>
                     <connections>
                         <outlet property="changeLabel" destination="0jy-vt-3PB" id="Abh-QA-4z7"/>
+                        <outlet property="chart" destination="Up3-gD-Zlm" id="lLO-Ke-7dx"/>
                         <outlet property="imageView" destination="ese-Jo-dwF" id="Itr-eL-xRe"/>
                         <outlet property="marketCapLabel" destination="q7a-Ek-Abl" id="kR4-tr-CXe"/>
                         <outlet property="nameLabel" destination="NYu-w6-G2q" id="wpa-JH-7dc"/>

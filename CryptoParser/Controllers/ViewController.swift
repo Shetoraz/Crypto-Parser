@@ -9,12 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var tableView: UITableView!
-    
+
     private let model = Model(.kernel)
     private let refreshControl = UIRefreshControl()
+
+    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class DetailedViewController: UIViewController {
 
@@ -17,14 +18,36 @@ class DetailedViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var volumeLabel: UILabel!
+    @IBOutlet weak var chart: LineChartView!
+
+    let model = DetailedModel(.kernel)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addObserver()
+    }
 
+    func drawChart() {
+        let line = LineChartDataSet(entries: self.model.lineChartEntry, label: "Number")
+        line.colors = [NSUIColor.white]
+        let data = LineChartData()
+        data.addDataSet(line)
+        self.chart.data = data
+    }
+
+    private func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "drawChart"), object: nil)
+    }
+
+    @objc private func refresh(notification: Notification) {
+        DispatchQueue.main.async {
+            self.drawChart()
+        }
     }
 
     func setupUI(curr: Response) {
         DispatchQueue.main.async {
+            self.model.getChart(for: curr)
             if let image = curr.image {
                 if let url = URL(string: image) {
                     self.imageView.load(url)
@@ -49,7 +72,7 @@ class DetailedViewController: UIViewController {
                 self.marketCapLabel.text = "$ \(marketCap.formattedWithSeparator)"
             }
             if let name = curr.name {
-                self.nameLabel.text = "\(name)"
+                self.nameLabel.text = name
             }
             if let supply = curr.circulatingSupply {
                 self.supplyLabel.text = "\(Int(supply).formattedWithSeparator) \(curr.symbol?.uppercased() ?? "")"
