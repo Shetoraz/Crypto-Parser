@@ -26,14 +26,20 @@ class CurrencyCustomTableViewCell: UITableViewCell {
     }
 
     func setup(_ name: String?, price: Double?, change: Double?, rank: Int?) {
-        self.nameLabel.text = "\(rank ?? 0). \(name ?? "")"
-        self.priceLabel.text = price?.formattedWithSeparator
-        self.changeLabel.text = change?.formattedWithSeparator
+        if let name = name {
+            if let rank = rank {
+                self.nameLabel.text = "\(rank). \(name)"
+            }
+        }
+        if let price = price {
+            self.priceLabel.text = "$" + price.formattedWithSeparator
+        }
         if let change = change {
-            if change > 0.0 {
-                self.changeLabel.textColor = .systemGreen
-            } else {
+            self.changeLabel.text = String(format: "%.2f", change) + "%"
+            if change < 0 {
                 self.changeLabel.textColor = .systemRed
+            } else {
+                self.changeLabel.textColor = .systemGreen
             }
         }
     }

@@ -24,7 +24,15 @@ class DetailedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupChart()
         self.addObserver()
+    }
+
+    func setupChart() {
+        self.chart.noDataText = "Loading..."
+        self.chart.noDataTextColor = .white
+        self.chart.gridBackgroundColor = .clear
+        self.chart.borderLineWidth.native = 4
     }
 
     func drawChart() {

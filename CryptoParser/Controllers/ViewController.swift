@@ -65,7 +65,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let rank = item.marketCapRank
         let name = item.symbol?.uppercased()
         let price = item.currentPrice
-        let change = item.priceChange24H
+        let change = item.priceChangePercentage24H
         cell.setup(name, price: price, change: change, rank: rank)
         
         return cell
