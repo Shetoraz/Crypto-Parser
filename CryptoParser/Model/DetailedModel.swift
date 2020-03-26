@@ -21,7 +21,7 @@ class DetailedModel {
 
     func convertToChartData() {
         guard let prices = self.chart.prices else { return }
-        for interval in stride(from: 0, to: prices.count-1, by: 20) {
+        for interval in stride(from: 0, to: prices.count-1, by: 10) {
             let value = ChartDataEntry()
             for data in 0..<prices[interval].count {
                 if data == 0 {
@@ -48,5 +48,3 @@ class DetailedModel {
         }
     }
 }
-
-

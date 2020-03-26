@@ -30,17 +30,35 @@ class DetailedViewController: UIViewController {
 
     func setupChart() {
         self.chart.noDataText = "Loading..."
-        self.chart.noDataTextColor = .white
-        self.chart.gridBackgroundColor = .clear
+        self.chart.noDataTextColor = .black
         self.chart.borderLineWidth.native = 4
+        self.chart.leftAxis.labelTextColor = .black
+        self.chart.xAxis.labelPosition = .bottom
+        self.chart.xAxis.drawGridLinesEnabled = false
+        self.chart.drawGridBackgroundEnabled = false
+        self.chart.rightAxis.enabled = false
+        self.chart.legend.enabled = false
+        self.chart.leftAxis.drawAxisLineEnabled = false
     }
 
     func drawChart() {
-        let line = LineChartDataSet(entries: self.model.lineChartEntry, label: "Number")
-        line.colors = [NSUIColor.white]
+        let dataSet = LineChartDataSet(entries: self.model.lineChartEntry, label: nil)
         let data = LineChartData()
-        data.addDataSet(line)
+        dataSet.colors = [NSUIColor.black]
+        dataSet.drawCirclesEnabled = false
+        dataSet.drawValuesEnabled = false
+        dataSet.drawFilledEnabled = true
+        dataSet.lineWidth = 4
+        dataSet.mode = .cubicBezier
+        let gradientFill = [UIColor.black.cgColor, UIColor.clear.cgColor] as CFArray
+        let colorLocations: [CGFloat] = [1.0, 0.0]
+        guard let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientFill, locations: colorLocations) else { print ("gradient error"); return }
+        dataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
+        data.addDataSet(dataSet)
+
         self.chart.data = data
+        self.chart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInOutCubic)
+        dataSet.notifyDataSetChanged()
     }
 
     private func addObserver() {

@@ -71,7 +71,12 @@ extension AllCurrencyViewController: UITableViewDelegate, UITableViewDataSource 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
-            let item = self.model.currencies[indexPath.section]
+            let item: Response
+            if resultSearchController.isActive {
+                item = self.model.filteredCurrencies[indexPath.section]
+            } else {
+                item = self.model.currencies[indexPath.section]
+            }
             if cell.accessoryType == .checkmark {
                 self.model.selectedCurrencies.removeAll{$0 == item}
                 cell.accessoryType = .none
