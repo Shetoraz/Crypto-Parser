@@ -26,7 +26,8 @@ class DetailedModel {
             for data in 0..<prices[interval].count {
                 if data == 0 {
                     value.x = prices[interval][data]
-                } else {
+                }
+                if data == 1 {
                     value.y = prices[interval][data]
                 }
             }

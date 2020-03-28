@@ -18,6 +18,7 @@ class DetailedViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var volumeLabel: UILabel!
+    @IBOutlet weak var selectedPrice: UILabel!
     @IBOutlet weak var chart: LineChartView!
 
     let model = DetailedModel(.kernel)
@@ -28,12 +29,17 @@ class DetailedViewController: UIViewController {
         self.addObserver()
     }
 
-    func setupChart() {
+    private func setupChart() {
+        self.chart.delegate = self
+        self.supplyLabel.adjustsFontSizeToFitWidth = true
         self.chart.noDataText = "Loading..."
         self.chart.noDataTextColor = .black
         self.chart.borderLineWidth.native = 4
         self.chart.leftAxis.labelTextColor = .black
+        self.chart.xAxis.labelCount = 5
         self.chart.xAxis.labelPosition = .bottom
+        self.chart.xAxis.granularity = 1
+        self.chart.xAxis.valueFormatter = DateValueFormatter()
         self.chart.xAxis.drawGridLinesEnabled = false
         self.chart.drawGridBackgroundEnabled = false
         self.chart.rightAxis.enabled = false
@@ -41,7 +47,7 @@ class DetailedViewController: UIViewController {
         self.chart.leftAxis.drawAxisLineEnabled = false
     }
 
-    func drawChart() {
+    private func drawChart() {
         let dataSet = LineChartDataSet(entries: self.model.lineChartEntry, label: nil)
         let data = LineChartData()
         dataSet.colors = [NSUIColor.black]
@@ -55,9 +61,8 @@ class DetailedViewController: UIViewController {
         guard let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientFill, locations: colorLocations) else { print ("gradient error"); return }
         dataSet.fill = Fill.fillWithLinearGradient(gradient, angle: 90.0)
         data.addDataSet(dataSet)
-
         self.chart.data = data
-        self.chart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0, easingOption: .easeInOutCubic)
+        self.chart.animate(xAxisDuration: 1.0, yAxisDuration: 1.0, easingOption: .easeInOutCubic)
         dataSet.notifyDataSetChanged()
     }
 
@@ -105,4 +110,13 @@ class DetailedViewController: UIViewController {
             }
         }
     }
+}
+
+extension DetailedViewController: ChartViewDelegate {
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        DispatchQueue.main.async {
+            self.selectedPrice.text = "$ " + entry.y.formattedWithSeparator
+        }
+    }
+
 }

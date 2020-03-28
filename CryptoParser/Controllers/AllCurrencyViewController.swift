@@ -106,7 +106,7 @@ extension AllCurrencyViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension AllCurrencyViewController: UISearchResultsUpdating {
 
-    func setupSearchController() {
+    private func setupSearchController() {
         resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
@@ -118,7 +118,7 @@ extension AllCurrencyViewController: UISearchResultsUpdating {
         })()
     }
 
-    func updateSearchResults(for searchController: UISearchController) {
+    internal func updateSearchResults(for searchController: UISearchController) {
         self.model.filteredCurrencies.removeAll()
         if let searchTerm = searchController.searchBar.text?.lowercased() {
             let array = self.model.currencies.filter { result in
