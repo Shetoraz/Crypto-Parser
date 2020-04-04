@@ -9,11 +9,11 @@
 import UIKit
 
 class CurrencyCustomTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var changeLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.masksToBounds = false
@@ -24,7 +24,7 @@ class CurrencyCustomTableViewCell: UITableViewCell {
         layer.shadowOpacity = 0.3
         layer.frame = frame
     }
-
+    
     func setup(_ name: String?, price: Double?, change: Double?, rank: Int?) {
         if let name = name {
             if let rank = rank {

@@ -12,12 +12,11 @@ class Networker {
     
     enum Requests: String {
         typealias RawValue = String
-        case all = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-        case refresh = "https://api.coingecko.com/api/v3/simple/price?ids="
+        case all = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=false"
         case chart = "https://api.coingecko.com/api/v3/coins/"
     }
 
-    func getCurrencies(completion: @escaping (Result<Currency, Error>) -> Void) {
+    func requestCurrencies(completion: @escaping (Result<Currency, Error>) -> Void) {
         guard let url = URL(string: Requests.all.rawValue) else { return }
         let session = URLSession.shared
         let decoder = JSONDecoder()
@@ -33,7 +32,7 @@ class Networker {
         }.resume()
     }
 
-    func getChart(for currency: String, completion: @escaping (Result<Chart, Error>) -> Void) {
+    func requestChart(for currency: String, completion: @escaping (Result<Chart, Error>) -> Void) {
         guard let url = URL(string: Requests.chart.rawValue + "\(currency)/market_chart?vs_currency=usd&days=30") else { return }
         let session = URLSession.shared
         let decoder = JSONDecoder()

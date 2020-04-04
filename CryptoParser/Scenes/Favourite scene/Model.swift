@@ -18,7 +18,7 @@ class Model {
     }
 
     func refresh() {
-        self.kernel?.network.getCurrencies() { response in
+        self.kernel?.network.requestCurrencies() { response in
             switch response {
             case .success(let currencys):
                 for item in currencys {

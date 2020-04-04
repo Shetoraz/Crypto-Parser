@@ -10,16 +10,16 @@ import Foundation
 import Charts
 
 class DetailedModel {
-
+    
     private let kernel: Kernel?
-    var chart = Chart(prices: [[0.0]], marketCaps: [[0.0]], totalVolumes: [[0.0]])
+    private var chart = Chart(prices: [[0.0]], marketCaps: [[0.0]], totalVolumes: [[0.0]])
     var lineChartEntry = [ChartDataEntry]()
-
+    
     init(_ kernel: Kernel) {
         self.kernel = kernel
     }
-
-    func convertToChartData() {
+    
+    private func convertToChartData() {
         guard let prices = self.chart.prices else { return }
         for interval in stride(from: 0, to: prices.count-1, by: 10) {
             let value = ChartDataEntry()
@@ -35,10 +35,10 @@ class DetailedModel {
         }
         NotificationCenter.default.post(name: Notification.Name("drawChart"), object: nil)
     }
-
+    
     func getChart(for currency: Response) {
         guard let id = currency.id else { return }
-        self.kernel?.network.getChart(for: id) { response in
+        self.kernel?.network.requestChart(for: id) { response in
             switch response {
             case .success(let chart):
                 self.chart = chart

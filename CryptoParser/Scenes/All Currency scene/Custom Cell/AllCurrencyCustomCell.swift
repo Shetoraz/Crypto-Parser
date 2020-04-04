@@ -9,10 +9,10 @@
 import UIKit
 
 class AllCurrencyCustomCell: UITableViewCell {
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.masksToBounds = false
@@ -23,7 +23,7 @@ class AllCurrencyCustomCell: UITableViewCell {
         layer.shadowOpacity = 0.3
         layer.frame = frame
     }
-
+    
     func setup(_ name: String?, price: Double?) {
         if let nameLabel = self.nameLabel {
             nameLabel.text = name

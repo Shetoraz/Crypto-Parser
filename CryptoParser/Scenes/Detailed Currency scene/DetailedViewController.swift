@@ -34,12 +34,13 @@ class DetailedViewController: UIViewController {
         self.supplyLabel.adjustsFontSizeToFitWidth = true
         self.chart.noDataText = "Loading..."
         self.chart.noDataTextColor = .black
-        self.chart.borderLineWidth.native = 4
+        self.chart.borderLineWidth.native = 5
         self.chart.leftAxis.labelTextColor = .black
         self.chart.xAxis.labelCount = 5
         self.chart.xAxis.labelPosition = .bottom
         self.chart.xAxis.granularity = 1
         self.chart.xAxis.valueFormatter = DateValueFormatter()
+        self.chart.scaleYEnabled = false
         self.chart.xAxis.drawGridLinesEnabled = false
         self.chart.drawGridBackgroundEnabled = false
         self.chart.rightAxis.enabled = false
@@ -86,10 +87,10 @@ class DetailedViewController: UIViewController {
             }
             self.navigationController?.navigationBar.topItem?.title = curr.symbol?.uppercased()
             if let price = curr.currentPrice {
-                self.priceLabel.text = "$ \(price.formattedWithSeparator)"
+                self.priceLabel.text = "$ " + price.formattedWithSeparator
             }
             if let volume = curr.totalVolume {
-                self.volumeLabel.text = "$ " + String(volume.formattedWithSeparator)
+                self.volumeLabel.text = "$ " + volume.formattedWithSeparator
             }
             if let change = curr.priceChangePercentage24H {
                 self.changeLabel.text = String(format: "%.2f", change) + "%"
@@ -100,7 +101,7 @@ class DetailedViewController: UIViewController {
                 }
             }
             if let marketCap = curr.marketCap {
-                self.marketCapLabel.text = "$ \(marketCap.formattedWithSeparator)"
+                self.marketCapLabel.text = "$ " + marketCap.formattedWithSeparator
             }
             if let name = curr.name {
                 self.nameLabel.text = name

@@ -9,10 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     private let model = Model(.kernel)
     private let refreshControl = UIRefreshControl()
-
+    
     @IBOutlet weak var addButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
@@ -115,7 +115,7 @@ extension ViewController {
         }
         self.tableView.reloadData()
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "detailed" {
             let vc = segue.destination as! DetailedViewController

@@ -9,19 +9,19 @@
 import Foundation
 
 class AllCurrencyModel {
-
+    
     var currencies = Currency()
     var selectedCurrencies = Currency()
     var filteredCurrencies = Currency()
     private let kernel: Kernel?
-
+    
     init(_ kernel: Kernel) {
         self.kernel = kernel
         self.refresh()
     }
-
+    
     func refresh() {
-        self.kernel?.network.getCurrencies() { response in
+        self.kernel?.network.requestCurrencies() { response in
             switch response {
             case .success(let currencys):
                 for item in 0...currencys.count - 1 {

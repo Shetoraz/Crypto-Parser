@@ -9,19 +9,19 @@
 import UIKit
 
 class AllCurrencyViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
-
+    
     let model = AllCurrencyModel(.kernel)
     var resultSearchController = UISearchController()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTable()
         self.setupSearchController()
         self.addObserver()
     }
-
+    
     private func setupTable() {
         self.tableView.register(UINib(nibName: "AllCurrencyCustomCell", bundle: .main), forCellReuseIdentifier: "allCurrency")
         self.tableView.tableFooterView = UIView()
@@ -31,7 +31,7 @@ class AllCurrencyViewController: UIViewController {
     private func addObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "Refresh"), object: nil)
     }
-
+    
     @objc private func refresh(notification: Notification) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -40,11 +40,11 @@ class AllCurrencyViewController: UIViewController {
 }
 
 extension AllCurrencyViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "allCurrency") as! AllCurrencyCustomCell
         let item: Response
@@ -57,10 +57,10 @@ extension AllCurrencyViewController: UITableViewDelegate, UITableViewDataSource 
         let price = item.currentPrice
         cell.accessoryType = self.model.selectedCurrencies.contains(item) ? .checkmark : .none
         cell.setup(name, price: price)
-
+        
         return cell
     }
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         if resultSearchController.isActive {
             return self.model.filteredCurrencies.count
@@ -68,7 +68,7 @@ extension AllCurrencyViewController: UITableViewDelegate, UITableViewDataSource 
             return self.model.currencies.count
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             let item: Response
@@ -87,25 +87,25 @@ extension AllCurrencyViewController: UITableViewDelegate, UITableViewDataSource 
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 7
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UIView()
         header.backgroundColor = UIColor.clear
-
+        
         return header
     }
 }
 
 extension AllCurrencyViewController: UISearchResultsUpdating {
-
+    
     private func setupSearchController() {
         resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
@@ -113,11 +113,11 @@ extension AllCurrencyViewController: UISearchResultsUpdating {
             controller.obscuresBackgroundDuringPresentation = false
             controller.searchBar.sizeToFit()
             self.tableView.tableHeaderView = controller.searchBar
-
+            
             return controller
         })()
     }
-
+    
     internal func updateSearchResults(for searchController: UISearchController) {
         self.model.filteredCurrencies.removeAll()
         if let searchTerm = searchController.searchBar.text?.lowercased() {
